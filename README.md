@@ -75,7 +75,8 @@ main{padding:14px 12px 28px}h1{font-size:22px}
 .cl{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.cl-m{min-width:0}.cl-r{text-align:right;white-space:nowrap}.cl-t{border:0;padding:5px 0}
 a{color:var(--pri)}
 @media(max-width:720px){a{font-weight:600}.tw table,.tw tbody{display:block;width:100%}.tw tr:has(th){display:none}.tw tr{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:10px 0;border-bottom:1px solid var(--line)}main .tw td{border:0!important;padding:2px 0!important;display:block}main .tw td.r{text-align:right}}
-@media print{body *{visibility:hidden}.modal,.modal *{visibility:visible}.modal{position:absolute;background:none;padding:0}.noprint{display:none!important}}
+.app{position:fixed;inset:0;overflow-y:auto;overflow-x:hidden;z-index:10;background:var(--bg);align-content:start}html,body{overflow:hidden;height:100%}
+@media print{html,body{overflow:visible!important;height:auto!important}body *{visibility:hidden}.modal,.modal *{visibility:visible}.modal{position:absolute;background:none;padding:0}.noprint{display:none!important}}
 </style>
 </head>
 <body>
@@ -281,7 +282,7 @@ function tax(){
 function csv(){const rows=[['Tanggal','Invoice','Pelanggan','DPP','PPN','Total']];act().filter(s=>s.date.startsWith(month)).forEach(s=>{const t=tot(s);rows.push([s.date,s.no,s.cust,t.sub,t.ppn,t.total])});
  const text=rows.map(r=>r.join(',')).join('\n');try{const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(text);a.download='rekap-pajak-'+month+'.csv';a.click()}catch(e){}toast('Rekap pajak diunduh (jika browser mengizinkan)')}
 
-function render(){nav();$('#main').innerHTML={dash,items,sell,buy,tax}[view]();window.scrollTo(0,0);if(view==='sell')av()}
+function render(){nav();$('#main').innerHTML={dash,items,sell,buy,tax}[view]();window.scrollTo(0,0);$('.app').scrollTop=0;if(view==='sell')av()}
 S.items.forEach(i=>{if(!i.kar){const n=i.ctn||0,a=n?Array(n).fill(r2(i.stock/n)):[];if(n)a[n-1]=r2(i.stock-sum(a.slice(0,n-1)));i.kar=a}});
 render();
 </script>
