@@ -70,6 +70,11 @@ nav{padding:14px 6px}
 nav button{flex-direction:column;gap:4px;padding:10px 2px;font-size:10.5px;border-radius:14px;margin-bottom:6px;text-align:center}
 main{padding:14px 12px 28px}h1{font-size:22px}
 .grid{grid-template-columns:1fr 1fr}.card.hero{grid-column:1/-1}.v{font-size:18px}.hero .v{font-size:26px}}
+@media(max-width:720px){select,input{max-width:100%;min-width:0}.row{gap:10px}.row>label{flex:1 1 140px;min-width:0}#s_item,#b_item,#f_j,#f_s{width:100%}.row>.btn{flex:1 1 auto}.modal{padding:12px}.inv{padding:18px;overflow-x:auto}.inv table{font-size:13px}.inv th,.inv td{padding:7px 5px}
+.grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}.grid[style]{grid-template-columns:minmax(0,1fr)!important}.grid .card{min-width:0;padding:14px}.v{font-size:16px;overflow-wrap:normal;word-break:keep-all}.hero .v{font-size:24px}}
+.cl{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.cl-m{min-width:0}.cl-r{text-align:right;white-space:nowrap}.cl-t{border:0;padding:5px 0}
+a{color:var(--pri)}
+@media(max-width:720px){a{font-weight:600}.tw table,.tw tbody{display:block;width:100%}.tw tr:has(th){display:none}.tw tr{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:10px 0;border-bottom:1px solid var(--line)}main .tw td{border:0!important;padding:2px 0!important;display:block}main .tw td.r{text-align:right}}
 @media print{body *{visibility:hidden}.modal,.modal *{visibility:visible}.modal{position:absolute;background:none;padding:0}.noprint{display:none!important}}
 </style>
 </head>
@@ -202,8 +207,7 @@ function addItem(){const g=k=>$('#n_'+k).value.trim();if(!g('sku')||!g('warna'))
  S.items.push({id:Date.now(),sku:g('sku'),warna:g('warna'),name:g('name')||'-',unit:'kg',buy:+g('buy')||0,sell:+g('sell')||0,kar:parseW(g('w')),stock:r2(sum(parseW(g('w')))),ctn:parseW(g('w')).length,min:+g('min')||0});save();toast('Barang disimpan');render()}
 
 function cartTable(c,k){const t=calc(c,k==='sell'&&S.set.pkp,S.set.ppn);const t2=k==='buy'?calc(c,S.set.pkp,S.set.ppn):t;
- return c.length?`<div class="tw"><table>${c.map((l,i)=>`<tr><td>${esc(l.name)}</td><td class="r">${l.n?l.n+' karung · ':''}${kg(l.qty)} × ${rp(l.price)}/kg</td><td class="r">${rp(l.qty*l.price)}</td><td><button class="btn g" onclick="${k}Cart.splice(${i},1);render()">Hapus</button></td></tr>`).join('')}
- <tr><td colspan="2" class="r">PPN ${S.set.pkp?S.set.ppn+'%':'(non-PKP)'}</td><td class="r">${rp(t2.ppn)}</td><td></td></tr><tr><td colspan="2" class="r"><b>Total</b></td><td class="r"><b>${rp(t2.total)}</b></td><td></td></tr></table></div>`:'<p class="sub">Belum ada barang di daftar.</p>'}
+ return c.length?`<div>${c.map((l,i)=>`<div class="cl"><div class="cl-m"><b>${esc(l.name)}</b><div class="k">${l.n?l.n+' karung · ':''}${kg(l.qty)} × ${rp(l.price)}/kg</div></div><div class="cl-r"><b>${rp(l.qty*l.price)}</b><br><button class="btn g sm" style="margin:6px 0 0" onclick="${k}Cart.splice(${i},1);render()">Hapus</button></div></div>`).join('')}<div class="cl cl-t"><span>PPN ${S.set.pkp?S.set.ppn+'%':'(non-PKP)'}</span><span>${rp(t2.ppn)}</span></div><div class="cl cl-t"><b>Total</b><b>${rp(t2.total)}</b></div></div>`:'<p class="sub">Belum ada barang di daftar.</p>'}
 function sell(){return `<h1>Penjualan</h1><p class="sub">Simpan transaksi untuk membuat invoice dan mengurangi stok.</p>
  <div class="card"><h2>Transaksi baru</h2><div class="row"><label>Tanggal<input type="date" value="${D.s}" onchange="D.s=this.value"></label><label>Pelanggan<input id="s_cust" placeholder="Nama pelanggan" value="Pelanggan Umum"></label>
  <label>Barang<select id="s_item" onchange="$('#s_price').value=S.items.find(i=>i.id==this.value).sell;av()">${opts()}</select></label>
