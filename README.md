@@ -1,3 +1,4 @@
+[index (2).html](https://github.com/user-attachments/files/35307508/index.2.html)
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -6,8 +7,8 @@
 <title>TokoKu – Stok, Penjualan, Invoice & Pajak</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#F1F4F6;--card:#fff;--ink:#17262E;--mut:#5E7280;--line:#DCE3E8;--pri:#0E5A6B;--pri-t:#fff;--soft:#E1EFF2;--warn:#B45F06;--warnbg:#FCEBD3;--bad:#B3261E;--ok:#1B7A46;--okbg:#DDF1E5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A20;--card:#17262E;--ink:#E8EEF1;--mut:#93A5B0;--line:#27404B;--pri:#4FB6CB;--pri-t:#08232A;--soft:#1B3A44;--warn:#F2B35E;--warnbg:#3A2C14;--bad:#F2877F;--ok:#6FD39A;--okbg:#17352450;color-scheme:dark}}
+:root{--bg:#F1F4F6;--card:#fff;--ink:#17262E;--mut:#46586A;--line:#C5D0D8;--pri:#0E5A6B;--pri-t:#fff;--soft:#E1EFF2;--warn:#B45F06;--warnbg:#FCEBD3;--bad:#B3261E;--ok:#1B7A46;--okbg:#DDF1E5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A20;--card:#17262E;--ink:#E8EEF1;--mut:#B4C3CC;--line:#3B5764;--pri:#4FB6CB;--pri-t:#08232A;--soft:#1B3A44;--warn:#F2B35E;--warnbg:#3A2C14;--bad:#F2877F;--ok:#6FD39A;--okbg:#17352450;color-scheme:dark}}
 *{box-sizing:border-box}html,body{margin:0}
 body{background:var(--bg);color:var(--ink);font:15px/1.5 "Plus Jakarta Sans",system-ui,sans-serif}
 .app{display:grid;grid-template-columns:210px 1fr;min-height:100vh}
@@ -24,8 +25,13 @@ h1{font-size:24px;margin:0 0 4px;font-weight:800}h2{font-size:16px;margin:0 0 10
 .grid .card{margin:0}
 .k{color:var(--mut);font-size:13px}.v{font-size:22px;font-weight:800;margin-top:2px}
 .hero .v{font-size:30px;color:var(--pri)}
-table{width:100%;border-collapse:collapse}th,td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
-th{color:var(--mut);font-weight:500;font-size:13px}td.r,th.r{text-align:right}
+table{width:100%;border-collapse:collapse}th,td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle;color:var(--ink)}
+th{color:var(--ink);font-weight:700;font-size:13px;background:var(--soft)}
+main table,main tr,main td,main th{background:transparent!important;border-left:0!important;border-right:0!important;border-top:0!important;box-shadow:none!important}
+main th{background:var(--soft)!important}
+main td,main th{border-bottom:1px solid var(--line)!important;color:var(--ink)!important}
+main h1,main h2{border:0!important;padding:0!important;margin-top:0!important}
+main h1{font-size:24px!important}main h2{font-size:16px!important}td.r,th.r{text-align:right}
 .tw{overflow-x:auto}
 input,select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;margin-bottom:10px}
@@ -41,7 +47,7 @@ input,select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid
 .note{background:var(--warnbg);color:var(--warn);border-radius:8px;padding:10px 12px;font-size:13px}
 .modal{position:fixed;inset:0;background:#0009;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:20px;z-index:20}
 .inv{background:#fff;color:#111;max-width:640px;width:100%;border-radius:10px;padding:28px}
-.inv table td,.inv table th{border-color:#ddd;color:#111}.inv th{color:#555}
+.inv table td,.inv table th{border-color:#ddd;color:#111}.inv th{background:#eee;color:#222}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:84px;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:8px;z-index:30}
 @media(max-width:720px){
 .app{grid-template-columns:1fr}
